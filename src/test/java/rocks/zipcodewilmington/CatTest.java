@@ -3,6 +3,8 @@ package rocks.zipcodewilmington;
 import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Cat;
+import rocks.zipcodewilmington.animals.Animal;
+import rocks.zipcodewilmington.animals.Mammal;
 
 import java.util.Date;
 
@@ -11,13 +13,116 @@ import java.util.Date;
  */
 public class CatTest {
     // TODO - Create tests for `void setName(String name)`
-    // TODO - Create tests for `speak`
-    // TODO - Create tests for `setBirthDate(Date birthDate)`
-    // TODO - Create tests for `void eat(Food food)`
-    // TODO - Create tests for `Integer getId()`
-    // TODO - Create test to check Animal inheritance; google search `java instanceof keyword`
-    // TODO - Create test to check Mammal inheritance; google search `java instanceof keyword`
+    @Test
+    public void setNameTest() {
+        // Given
+        Cat cat = new Cat(null, null, null);
+        String givenName = "Kitty";
 
+        // When
+        cat.setName(givenName);
+
+        // Then
+        String catName = cat.getName();
+        Assert.assertEquals("Kitty", catName);
+    }
+
+    // TODO - Create tests for `speak`
+    @Test
+    public void speakTest() {
+        // Given
+        Cat cat = new Cat(null, null, null);
+
+        // When
+        String actualCatSpeak = cat.speak();
+
+        // Then
+        Assert.assertEquals("meow!", actualCatSpeak);
+
+    }
+
+    // TODO - Create tests for `setBirthDate(Date birthDate)`
+    @Test
+    public void setBirthDateTest() {
+        // Given
+        Cat cat = new Cat("Bud", null, null);
+        Date givenBirthDate = new Date(1992, 8, 30);
+
+        // When
+        cat.setBirthDate(givenBirthDate);
+
+        // Then
+        Date actualBirthDate = cat.getBirthDate();
+        Assert.assertEquals(givenBirthDate, actualBirthDate);
+    }
+
+    // TODO - Create tests for `void eat(Food food)`
+    @Test
+    public void eatTest () {
+        // Given
+        String givenName = "Zula";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
+        Cat cat = new Cat(givenName, givenBirthDate, givenId);
+        Food actualFood = new Food();
+
+        // When
+        cat.eat(actualFood);
+
+        // Then
+        int actualNumberMealsEaten = cat.getNumberOfMealsEaten();
+        Assert.assertEquals(1, actualNumberMealsEaten);
+    }
+
+    // TODO - Create tests for `Integer getId()`
+    @Test
+    public void getIdTest() {
+        // Given
+        String givenName = "Zula";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
+        Cat cat = new Cat(givenName, givenBirthDate, givenId);
+
+        // When
+        int actualId = cat.getId();
+
+        // Then
+        Assert.assertEquals(0, actualId);
+    }
+
+    // TODO - Create test to check Animal inheritance; google search `java instanceof keyword`
+    @Test
+    public void animalInheritanceTest() {
+        // Given
+        String givenName = "Zula";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
+
+        // When
+        Cat cat = new Cat(givenName, givenBirthDate, givenId);
+
+        // Then
+        boolean catIsAnimal = cat instanceof Animal;
+        Assert.assertTrue(catIsAnimal);
+
+    }
+
+    // TODO - Create test to check Mammal inheritance; google search `java instanceof keyword`
+    @Test
+    public void mammalInheritanceTest() {
+        // Given
+        String givenName = "Zula";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
+
+        // When
+        Cat cat = new Cat(givenName, givenBirthDate, givenId);
+
+        // Then
+        boolean catIsMammal = cat instanceof Mammal;
+        Assert.assertTrue(catIsMammal);
+
+    }
 
     @Test
     public void constructorTest() {
